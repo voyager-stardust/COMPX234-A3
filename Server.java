@@ -56,7 +56,6 @@ public class Server
             lock.unlock();
         }
     }
-
     private static int getTotalSize()
     {
         int totalSize=0;
@@ -66,7 +65,6 @@ public class Server
         }
         return totalSize;
     }
-
     static class ClientHandler implements Runnable
     {
         private Socket socket;
@@ -117,6 +115,10 @@ public class Server
 
         private String[] parseRequest(String line)
         {
+            if (line == null || line.length() < 7)
+            {
+                return null;
+            }
             line = line.trim();
             if (line.length() < 4) return null;
             int msgLen;
