@@ -29,8 +29,7 @@ public class Client
                 socketWriter.write(request);
                 socketWriter.flush();
                 String response = socketReader.readLine();
-                System.out.println("Request: " + requestLine);
-                System.out.println("Response: " + response);
+                System.out.println(requestLine.trim() + ": " + response.substring(4).trim());
             }
         }
         catch (IOException e)
