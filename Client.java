@@ -39,6 +39,15 @@ public class Client
 
     private String buildRequest(String line) throws IOException
     {
+        if (line == null || line.trim().isEmpty())
+        {
+            throw new IOException();
+        }
+        String[] parts = line.trim().split(" ", 3);
+        if (parts.length < 2)
+        {
+            throw new IOException("error");
+        }
         String[] parts = line.trim().split(" ", 3);
         String command = parts[0];
         String key = parts[1];
