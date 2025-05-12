@@ -14,6 +14,7 @@ public class Server
     private static int totalGets = 0;
     private static int totalPuts = 0;
     private static int totalErrors = 0;
+    private static final ExecutorService threadPool = Executors.newCachedThreadPool();
     public static void main(String[] args)
     {
         try (ServerSocket serverSocket = new ServerSocket(PORT))
@@ -25,7 +26,7 @@ public class Server
             {
                 Socket clientSocket = serverSocket.accept();
                 totalClients++;
-                new Thread(new ClientHandler(clientSocket)).start();
+                threadPool.execute(new ClientHandler(clientSocket));
             }
         }
         catch (IOException e)
