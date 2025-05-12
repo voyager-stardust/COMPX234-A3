@@ -21,6 +21,8 @@ public class Client
              BufferedReader socketReader = new BufferedReader(new InputStreamReader(socket.getInputStream())))
         {
             String requestLine;
+            Socket socket = new Socket(hostname, port);
+            socket.setSoTimeout(5000);
             while ((requestLine = fileReader.readLine()) != null)
             {
                 String request = buildRequest(requestLine);
