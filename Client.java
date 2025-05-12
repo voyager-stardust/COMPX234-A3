@@ -63,6 +63,10 @@ public class Client
         {
             content = command+" "+key;
         }
+        if (key.length() > 999 || (command.equals("PUT") && value.length() > 999))
+        {
+            throw new IOException("key is too long");
+        }
         int size = content.length();
         String sizeStr = String.format("%03d",size);
         return sizeStr+" "+content+"\n";
