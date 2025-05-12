@@ -17,6 +17,7 @@ public class Server
     private static final ExecutorService threadPool = Executors.newCachedThreadPool();
     public static void main(String[] args)
     {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {System.out.println("closing……");threadPool.shutdown();scheduler.shutdown();}));
         try (ServerSocket serverSocket = new ServerSocket(PORT))
         {
             System.out.println("Server started on port " + PORT);
