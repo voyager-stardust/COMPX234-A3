@@ -1,2 +1,3 @@
 # COMPX234-A3
 This is an assignment awaiting inspection, the content of which is a simulation server experiment.
+I considered whether to fully adopt synchronized when I was trying to write code, but it seemed difficult to handle some potential issues during the process (in fact, I got frustrated by long periods of waiting without feedback during bug testing, which led me to learn about ReentrantLock online). Compared to synchronized, ReentrantLock not only optimizes performance but also allocates requests reasonably, sacrificing some complexity for more accurate results, making it a much better choice.
